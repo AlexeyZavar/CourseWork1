@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { formatDateTime, getPluralForm } from "~/composables/texts";
-
 const route = useRoute();
 
 const initial = new Date();
@@ -45,7 +43,7 @@ const name = computed(
 );
 const subtitle = computed(() => {
   const gender = patient.value.gender === 0 ? "Мужчина" : "Женщина";
-  const age = getPluralForm(["год", "года", "лет"], patient.value.age);
+  const age = getPluralAge(patient.value.age);
   const weight = patient.value.weight + " кг";
 
   return `${gender}, ${age}, вес ${weight}`;
@@ -88,7 +86,7 @@ onUnmounted(() => {
 });
 
 useHead({
-  title: "Пациент",
+  title: "Данные о пациенте",
 });
 </script>
 

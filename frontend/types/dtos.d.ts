@@ -17,6 +17,19 @@ interface CreatePatientResponse
     success: boolean;
     message: string;
 }
+interface CreateUserRequest
+{
+    userName: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+    type: number;
+}
+interface CreateUserResponse
+{
+    success: boolean;
+    message: string;
+}
 interface LoginRequest
 {
     username: string;
@@ -35,6 +48,14 @@ interface PatientMeasurements
 interface PatientWarnings
 {
     data: PatientWarningDto[];
+}
+interface SearchPatientsResponse
+{
+    data: PatientDto[];
+}
+interface SearchUsersResponse
+{
+    data: UserDto[];
 }
 interface MeasureDataDto
 {

@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#region
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Tonometer.Database;
+using Tonometer.Database.Entities;
+
+#endregion
 
 namespace Tonometer.Web.Filters;
 
@@ -35,11 +40,21 @@ public sealed class EnsureAccessToPatientAttribute : ActionFilterAttribute
             await base.OnActionExecutionAsync(context, next);
             return;
         }
-        
+
         var dbContext = context.HttpContext.RequestServices.GetRequiredService<TonometerContext>();
         var hasAccess = await dbContext.Patients.Where(x => x.Id == patientId)
                                        .Select(x => x.Watchers.Any(y => y.Id == userId))
                                        .FirstOrDefaultAsync();
+
+        if (hasAccess)
+        {
+            await base.OnActionExecutionAsync(context, next);
+            return;
+        }
+
+        hasAccess = await dbContext.Users.Where(x => x.Id == userId)
+                                   .Select(x => x.Type == UserType.Admin)
+                                   .FirstOrDefaultAsync();
 
         if (hasAccess)
         {

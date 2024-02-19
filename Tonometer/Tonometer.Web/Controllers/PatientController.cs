@@ -130,7 +130,7 @@ public class PatientController : ControllerBase
                 Message = "Проверьте вес."
             });
         }
-        
+
         // todo: case insensitive username comparison
         var userExists = await _context.Users.AnyAsync(x => x.UserName == req.UserName);
         if (userExists)
@@ -172,6 +172,30 @@ public class PatientController : ControllerBase
         return Ok(new CreatePatientResponse
         {
             Success = true
+        });
+    }
+
+    [HttpGet("search")]
+    [EnsureAdmin]
+    public async Task<IActionResult> SearchPatients([FromQuery] string? query)
+    {
+        var q = query?.Trim();
+        var dbQuery = _context.Patients.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(q))
+        {
+            dbQuery = dbQuery.Where(x => x.FirstName.Contains(q) ||
+                                         x.LastName.Contains(q));
+        }
+
+        var patients = await dbQuery
+                             .OrderBy(x => x.Id)
+                             .Take(100)
+                             .ToListAsync();
+
+        return Ok(new SearchPatientsResponse
+        {
+            Data = _mapper.Map<List<PatientDto>>(patients)
         });
     }
 }

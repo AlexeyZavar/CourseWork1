@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#region
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Tonometer.Database;
 using Tonometer.Database.Entities;
+
+#endregion
 
 namespace Tonometer.Web.Filters;
 

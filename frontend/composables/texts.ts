@@ -10,6 +10,10 @@ export function getPluralForm(forms: String[], n: number) {
   return n + " " + forms[ending] || "";
 }
 
+export function getPluralAge(n: number) {
+  return getPluralForm(["год", "года", "лет"], n);
+}
+
 export const formatDateTime = (value: string) => {
   const date = new Date(value);
 

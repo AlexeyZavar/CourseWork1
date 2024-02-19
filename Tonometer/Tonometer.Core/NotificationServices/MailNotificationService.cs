@@ -1,5 +1,9 @@
-﻿using Tonometer.Core.NotificationServices.Abstractions;
+﻿#region
+
+using Tonometer.Core.NotificationServices.Abstractions;
 using Tonometer.Database.Entities;
+
+#endregion
 
 namespace Tonometer.Core.NotificationServices;
 
