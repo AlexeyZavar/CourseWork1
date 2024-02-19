@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const { signOut, getSession, data: session } = useAuth();
+const isAdmin = useIsAdmin();
 
 async function logout() {
   await signOut({ callbackUrl: "/" });
@@ -13,6 +14,10 @@ const initials = computed(
   () =>
     (session.value?.firstName[0] ?? "") + (session.value?.lastName[0] ?? ""),
 );
+
+useHead({
+  title: "Главная",
+});
 </script>
 
 <template>
@@ -20,8 +25,13 @@ const initials = computed(
     <v-layout>
       <v-app-bar flat>
         <v-container class="mx-auto d-flex align-center justify-center">
-          <v-btn text="Главная" variant="text" />
-          <v-btn text="Управление" variant="text" />
+          <v-btn text="Главная" variant="text" @click="navigateTo('/')" />
+          <v-btn
+            text="Управление"
+            variant="text"
+            @click="navigateTo('/admin')"
+            v-if="isAdmin"
+          />
 
           <v-spacer></v-spacer>
 
@@ -49,25 +59,8 @@ const initials = computed(
       <v-main class="bg-grey-lighten-3">
         <v-container>
           <v-row>
-            <v-col cols="2">
-              <v-sheet rounded="lg">
-                <v-list rounded="lg">
-                  <v-list-item link title="Последние данные" />
-
-                  <v-divider class="my-2"></v-divider>
-
-                  <v-list-item
-                    color="grey-lighten-4"
-                    link
-                    title="Refresh"
-                  ></v-list-item>
-                </v-list>
-              </v-sheet>
-            </v-col>
-
             <v-col>
               <v-sheet rounded="lg" class="px-6 pt-2 pb-6">
-                <p class="font-weight-medium text-lg-h3">Title here</p>
                 <v-divider class="mt-2" />
                 <div>
                   <slot />
@@ -78,7 +71,6 @@ const initials = computed(
         </v-container>
       </v-main>
     </v-layout>
-    <!--    <v-footer></v-footer>-->
   </v-app>
 </template>
 

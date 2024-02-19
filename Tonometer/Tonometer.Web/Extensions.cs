@@ -24,7 +24,7 @@ public static class Extensions
 
     public static int GetUserId(this HttpContext context)
     {
-        return Convert.ToInt32(context.User.FindFirstValue(ClaimTypes.Sid));
+        return Convert.ToInt32(context.User.FindFirstValue(ClaimTypes.Sid) ?? "-1");
     }
 
     public static void AddMapster(this IServiceCollection services)

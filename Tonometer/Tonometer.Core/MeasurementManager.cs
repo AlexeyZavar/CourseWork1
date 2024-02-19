@@ -120,6 +120,12 @@ public sealed class MeasurementManager : IHostedService
         var debugNotificationService = new DebugNotificationService(debugLogger);
         _notificationServices.Add(debugNotificationService);
 
+        var mailNotificationService = new MailNotificationService();
+        _notificationServices.Add(mailNotificationService);
+
+        var telegramNotificationsService = new TelegramNotificationService();
+        _notificationServices.Add(telegramNotificationsService);
+
         return Task.CompletedTask;
     }
 

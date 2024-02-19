@@ -2,6 +2,21 @@
 //     Changes to this file may cause incorrect behavior and will be lost if
 //     the code is regenerated.
 
+interface CreatePatientRequest
+{
+    userName: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    gender: number;
+    birthDay: any;
+    weight: number;
+}
+interface CreatePatientResponse
+{
+    success: boolean;
+    message: string;
+}
 interface LoginRequest
 {
     username: string;

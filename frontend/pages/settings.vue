@@ -1,11 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: "Настройки",
+});
+</script>
 
 <template>
   <v-layout>
     <v-row>
       <v-col>
         <v-text-field
-          label="Почта для уведомлений"
+          label="Почта"
+          variant="outlined"
+          class="mt-4"
+        ></v-text-field>
+        <v-text-field
+          label="Telegram"
           variant="outlined"
           class="mt-4"
         ></v-text-field>

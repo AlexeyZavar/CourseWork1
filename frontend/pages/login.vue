@@ -24,6 +24,10 @@ async function login() {
 
 const username = ref("");
 const password = ref("");
+
+useHead({
+  title: "Авторизация",
+});
 </script>
 
 <template>
@@ -53,6 +57,7 @@ const password = ref("");
                     prepend-icon="mdi-lock"
                     type="password"
                     v-model="password"
+                    @keydown.enter="login"
                   ></v-text-field>
                 </div>
               </v-card-item>

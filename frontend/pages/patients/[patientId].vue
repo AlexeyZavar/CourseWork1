@@ -86,6 +86,10 @@ onMounted(() => {
 onUnmounted(() => {
   clearInterval(refresherTask.value);
 });
+
+useHead({
+  title: "Пациент",
+});
 </script>
 
 <template>
@@ -94,7 +98,7 @@ onUnmounted(() => {
       <v-col>
         <v-card>
           <v-card-title class="text-h4"> {{ name }}</v-card-title>
-          <v-card-subtitle>{{ subtitle }}</v-card-subtitle>
+          <v-card-subtitle class="!tw-pb-2">{{ subtitle }}</v-card-subtitle>
         </v-card>
       </v-col>
       <v-col>
