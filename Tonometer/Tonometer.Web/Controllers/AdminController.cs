@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿#region
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tonometer.Database;
 using Tonometer.Database.Entities;
 using Tonometer.Web.Data.Models;
 using Tonometer.Web.Filters;
+
+#endregion
 
 namespace Tonometer.Web.Controllers;
 
@@ -21,7 +25,7 @@ public class AdminController : ControllerBase
     {
         _context = context;
     }
-    
+
     [HttpGet("statistics")]
     public async Task<IActionResult> GetStatistics()
     {
@@ -29,7 +33,7 @@ public class AdminController : ControllerBase
         var measuresCount = await _context.MeasureData.CountAsync();
         var devicesCount = await _context.MeasureDevices.CountAsync();
         var warningsCount = await _context.Warnings.CountAsync();
-        
+
         var usersCount = await _context.Users.CountAsync();
         var doctorsCount = await _context.Users.CountAsync(x => x.Type == UserType.Watcher);
         var adminsCount = await _context.Users.CountAsync(x => x.Type == UserType.Admin);
@@ -42,7 +46,7 @@ public class AdminController : ControllerBase
             TotalWarnings = warningsCount,
             TotalUsers = usersCount,
             TotalDoctors = doctorsCount,
-            TotalAdmins = adminsCount,
+            TotalAdmins = adminsCount
         });
     }
 }

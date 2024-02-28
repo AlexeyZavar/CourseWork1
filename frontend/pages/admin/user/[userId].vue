@@ -3,6 +3,15 @@ const route = useRoute();
 
 const { data: user } = await apiFetch<UserDto>(`/user/${route.params.userId}`);
 
+async function save() {
+  await apiFetch(`/user/${user.value.id}/update`, {
+    method: "POST",
+    body: JSON.stringify(user.value),
+  });
+
+  await refreshNuxtData();
+}
+
 useHead({
   title: "Данные о пользователе",
 });
@@ -29,28 +38,35 @@ useHead({
                 <v-text-field
                   label="Имя"
                   v-model="user.firstName"
-                  readonly
+                  @change="save"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
                   label="Фамилия"
                   v-model="user.lastName"
-                  readonly
+                  @change="save"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
                   label="Юзернейм"
                   v-model="user.userName"
-                  readonly
+                  @change="save"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Роль"
-                  v-model="user.type"
-                  readonly
+                  label="Почта"
+                  v-model="user.email"
+                  @change="save"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  label="Telegram"
+                  v-model="user.telegram"
+                  @change="save"
                 ></v-text-field>
               </v-col>
             </v-row>

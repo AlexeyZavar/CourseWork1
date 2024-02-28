@@ -29,7 +29,7 @@ public class DeviceController : ControllerBase
         _context = context;
         _mapper = mapper;
     }
-    
+
     [HttpGet("{deviceId:int}")]
     public async Task<IActionResult> GetDevice(int deviceId)
     {
@@ -68,7 +68,7 @@ public class DeviceController : ControllerBase
             Data = _mapper.Map<List<MeasureDeviceDto>>(devices)
         });
     }
-    
+
     [HttpPost("create")]
     public async Task<IActionResult> CreateDevice([FromBody] CreateDeviceRequest request)
     {
@@ -82,7 +82,7 @@ public class DeviceController : ControllerBase
                 Message = "Все поля должны быть заполнены."
             });
         }
-        
+
         var device = new MeasureDevice
         {
             Manufacturer = request.Manufacturer,

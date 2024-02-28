@@ -122,5 +122,6 @@ interface UserDto
     lastName: string;
     type: number;
     email: string;
+    telegram: string;
     patients: PatientDto[];
 }

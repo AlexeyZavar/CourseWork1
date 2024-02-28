@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { getPluralAge } from "~/composables/texts";
-
 const query = ref("");
 const page = ref(1);
 

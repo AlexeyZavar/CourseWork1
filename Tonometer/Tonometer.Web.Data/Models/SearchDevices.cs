@@ -1,4 +1,8 @@
-﻿using Tonometer.Web.Data.Models.Dtos;
+﻿#region
+
+using Tonometer.Web.Data.Models.Dtos;
+
+#endregion
 
 namespace Tonometer.Web.Data.Models;
 

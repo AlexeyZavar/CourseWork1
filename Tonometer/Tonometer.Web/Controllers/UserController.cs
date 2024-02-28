@@ -1,11 +1,13 @@
 ﻿#region
 
+using System.Text.Json;
 using MapsterMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tonometer.Database;
 using Tonometer.Database.Entities;
+using Tonometer.Web.Core.EntityUpdater;
 using Tonometer.Web.Data.Models;
 using Tonometer.Web.Data.Models.Dtos;
 using Tonometer.Web.Filters;
@@ -64,7 +66,6 @@ public class UserController : ControllerBase
     {
         return Task.FromResult<IActionResult>(Ok());
     }
-
 
     [HttpGet("session")]
     public async Task<IActionResult> Session()
@@ -197,5 +198,23 @@ public class UserController : ControllerBase
         {
             Success = true
         });
+    }
+
+    [HttpPost("{userId:int}/update")]
+    [EnsureSelfOrAdmin]
+    public async Task<IActionResult> UpdateUser(int userId, UserType userType)
+    {
+        var doc = await Request.ReadFromJsonAsync<JsonDocument>();
+        if (doc == null)
+        {
+            return BadRequest();
+        }
+
+        var user = await _context.Users.FirstAsync(x => x.Id == userId);
+        var inConfig = new UpdateIn<User>(doc, userType, _context, user,
+                                          UpdateConfigurationsStorage.UserConfiguration);
+        var res = await UpdateProcessor.Process(inConfig);
+
+        return Ok(res);
     }
 }

@@ -10,8 +10,8 @@ public sealed class User
     public string PasswordHash { get; set; } = null!;
 
     public UserType Type { get; set; }
-    public string? Email { get; set; } = null!;
-    public string? Telegram { get; set; } = null!;
+    public string? Email { get; set; }
+    public string? Telegram { get; set; }
 
     public ICollection<Patient> Patients { get; set; } = new List<Patient>();
 }

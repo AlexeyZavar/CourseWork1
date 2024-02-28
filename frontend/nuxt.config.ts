@@ -39,6 +39,7 @@ export default defineNuxtConfig({
         lastName: "string",
         type: "number",
         email: "string",
+        telegram: "string",
         patients: "PatientDto[]",
       },
       endpoints: {

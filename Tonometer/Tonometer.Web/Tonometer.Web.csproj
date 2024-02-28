@@ -26,6 +26,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Tonometer.Core\Tonometer.Core.csproj"/>
+        <ProjectReference Include="..\Tonometer.Web.Core\Tonometer.Web.Core.csproj"/>
         <ProjectReference Include="..\Tonometer.Web.Data\Tonometer.Web.Data.csproj"/>
     </ItemGroup>
 

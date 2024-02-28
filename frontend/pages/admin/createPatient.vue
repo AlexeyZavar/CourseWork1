@@ -33,7 +33,7 @@ async function create() {
   );
 
   if (status.value === "success") {
-    await navigateTo("/admin");
+    await navigateTo("/admin/patients");
   } else {
     showAlert.value = true;
     alertError.value = error.value!.data.message;

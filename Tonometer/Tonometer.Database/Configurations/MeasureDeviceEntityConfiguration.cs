@@ -21,5 +21,8 @@ public class MeasureDeviceEntityConfiguration : IEntityTypeConfiguration<Measure
         builder
             .HasMany(x => x.MeasureData)
             .WithOne(x => x.MeasureDevice);
+
+        builder
+            .HasIndex(x => x.Serial);
     }
 }
