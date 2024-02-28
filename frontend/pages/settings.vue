@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const { getSession } = useAuth();
 
 const session = await getSession();
@@ -33,18 +33,18 @@ useHead({
     <v-row>
       <v-col>
         <v-text-field
+          v-model="email"
+          class="mt-4"
           label="Почта"
           variant="outlined"
-          class="mt-4"
-          v-model="email"
         ></v-text-field>
         <v-text-field
+          v-model="telegram"
+          class="mt-4"
           label="Telegram"
           variant="outlined"
-          class="mt-4"
-          v-model="telegram"
         ></v-text-field>
-        <v-btn size="large" @click="save"> Сохранить </v-btn>
+        <v-btn size="large" @click="save"> Сохранить</v-btn>
       </v-col>
     </v-row>
   </v-layout>

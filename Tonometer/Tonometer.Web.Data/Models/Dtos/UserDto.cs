@@ -14,5 +14,6 @@ public sealed class UserDto
     public string LastName { get; set; } = null!;
     public UserType Type { get; set; }
     public string Email { get; set; } = null!;
+    public string Telegram { get; set; } = null!;
     public ICollection<PatientDto> Patients { get; set; } = new List<PatientDto>();
 }

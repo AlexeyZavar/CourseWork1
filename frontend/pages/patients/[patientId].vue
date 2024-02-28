@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute();
 
 const initial = new Date();
@@ -72,6 +72,24 @@ const measureDataHeaders = [
   },
 ];
 
+async function exportMeasurements() {
+  const { data: file } = await apiFetch<string>(
+    `/patient/${route.params.patientId}/export`,
+    {
+      query: {
+        format: "json",
+      },
+    },
+  );
+
+  const blob = new Blob([file.value], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "measurements.json";
+  a.click();
+}
+
 const refresherTask = ref();
 
 onMounted(() => {
@@ -123,14 +141,15 @@ useHead({
       </v-col>
     </v-row>
     <v-card class="tw-mt-6">
-      <v-row justify="center" class="mt-4">
-        <v-text-field type="date" v-model="dataFrom" />
-        <v-text-field type="date" v-model="dataTo" />
+      <v-row class="mt-4" justify="center">
+        <v-text-field v-model="dataFrom" type="date" />
+        <v-text-field v-model="dataTo" type="date" />
       </v-row>
       <v-data-table
-        :items="measurements.data"
         :headers="measureDataHeaders"
+        :items="measurements.data"
       ></v-data-table>
+      <v-btn @click="exportMeasurements">Экспорт</v-btn>
     </v-card>
   </div>
 </template>

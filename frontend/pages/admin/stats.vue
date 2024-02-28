@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const { data: stats } = await apiFetch<StatisticsResponse>("/admin/statistics");
 
 useHead({
@@ -18,50 +18,50 @@ useHead({
             <v-row>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Количество пациентов"
                   v-model="stats.totalPatients"
+                  label="Количество пациентов"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Количество измерений"
                   v-model="stats.totalMeasurements"
+                  label="Количество измерений"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Количество устройств"
                   v-model="stats.totalDevices"
+                  label="Количество устройств"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Количество предупреждений"
                   v-model="stats.totalWarnings"
+                  label="Количество предупреждений"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Количество пользователей"
                   v-model="stats.totalUsers"
+                  label="Количество пользователей"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Количество смотрящих"
                   v-model="stats.totalDoctors"
+                  label="Количество смотрящих"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Количество администраторов"
                   v-model="stats.totalAdmins"
+                  label="Количество администраторов"
                   readonly
                 ></v-text-field>
               </v-col>

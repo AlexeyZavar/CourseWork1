@@ -6,7 +6,7 @@ using Tonometer.Database.Entities;
 
 namespace Tonometer.Web.Data.Models;
 
-public class CreatePatientRequest
+public sealed class CreatePatientRequest
 {
     public string UserName { get; set; } = null!;
     public string Password { get; set; } = null!;
@@ -19,7 +19,7 @@ public class CreatePatientRequest
     public decimal Weight { get; set; }
 }
 
-public class CreatePatientResponse
+public sealed class CreatePatientResponse
 {
     public bool Success { get; set; }
     public string? Message { get; set; }

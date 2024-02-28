@@ -6,7 +6,7 @@ using Tonometer.Database.Entities;
 
 namespace Tonometer.Web.Data.Models;
 
-public class CreateUserRequest
+public sealed class CreateUserRequest
 {
     public string UserName { get; set; } = null!;
     public string FirstName { get; set; } = null!;
@@ -16,7 +16,7 @@ public class CreateUserRequest
     public UserType Type { get; set; }
 }
 
-public class CreateUserResponse
+public sealed class CreateUserResponse
 {
     public bool Success { get; set; }
     public string? Message { get; set; }

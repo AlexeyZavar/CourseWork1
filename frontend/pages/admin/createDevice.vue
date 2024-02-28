@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const formValid = ref(false);
 const showAlert = ref(false);
 const alertError = ref();
@@ -46,42 +46,42 @@ useHead({
         <v-alert
           v-model="showAlert"
           border="start"
-          variant="tonal"
           closable
           color="error"
           title="Ошибка"
+          variant="tonal"
         >
           {{ alertError }}
         </v-alert>
         <v-form v-model="formValid">
           <v-text-field
             v-model="manufacturer"
-            name="manufacturer"
-            label="Производитель"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="Производитель"
+            name="manufacturer"
+            required
+            variant="outlined"
           ></v-text-field>
           <v-text-field
             v-model="model"
-            name="model"
-            label="Модель"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="Модель"
+            name="model"
+            required
+            variant="outlined"
           ></v-text-field>
           <v-text-field
             v-model="serial"
-            name="serial"
-            label="Серийный номер"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="Серийный номер"
+            name="serial"
+            required
+            variant="outlined"
           ></v-text-field>
-          <v-btn size="large" @click="create" :disabled="!formValid">
+          <v-btn :disabled="!formValid" size="large" @click="create">
             Добавить
           </v-btn>
         </v-form>

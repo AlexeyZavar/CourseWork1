@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tonometer.Database;
 using Tonometer.Database.Entities;
+using Tonometer.Web.Core.DataExport;
+using Tonometer.Web.Core.DataExport.Abstractions;
 using Tonometer.Web.Data.Models;
 using Tonometer.Web.Data.Models.Dtos;
 using Tonometer.Web.Filters;
@@ -80,6 +82,28 @@ public class PatientController : ControllerBase
         {
             Data = _mapper.Map<List<PatientWarningDto>>(data)
         });
+    }
+
+    [HttpGet("{patientId:int}/export")]
+    [EnsureAccessToPatient]
+    public async Task<IActionResult> ExportMeasurements(int patientId, [FromQuery] string format)
+    {
+        IDataExporter? exporter = format switch
+                                  {
+                                      "xml"  => new XmlExporter(),
+                                      "json" => new JsonExporter(),
+                                      _      => null
+                                  };
+
+        if (exporter == null)
+        {
+            return BadRequest();
+        }
+
+        var stream = await exporter.Export(_context, patientId);
+        stream.Position = 0;
+
+        return File(stream, "application/octet-stream", $"data.{format}");
     }
 
     [HttpPost("create")]

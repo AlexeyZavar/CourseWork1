@@ -6,7 +6,7 @@ using Tonometer.Web.Data.Models.Dtos;
 
 namespace Tonometer.Web.Data.Models;
 
-public class SearchUsersResponse
+public sealed class SearchUsersResponse
 {
     public ICollection<UserDto> Data { get; set; } = null!;
 }

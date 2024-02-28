@@ -2,126 +2,125 @@
 //     Changes to this file may cause incorrect behavior and will be lost if
 //     the code is regenerated.
 
-interface CreateDeviceRequest
-{
-    manufacturer: string;
-    model: string;
-    serial: string;
+interface CreateDeviceRequest {
+  manufacturer: string;
+  model: string;
+  serial: string;
 }
-interface CreateDeviceResponse
-{
-    success: boolean;
-    message: string;
+
+interface CreateDeviceResponse {
+  success: boolean;
+  message: string;
 }
-interface CreatePatientRequest
-{
-    userName: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    gender: number;
-    birthDay: any;
-    weight: number;
+
+interface CreatePatientRequest {
+  userName: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  gender: number;
+  birthDay: any;
+  weight: number;
 }
-interface CreatePatientResponse
-{
-    success: boolean;
-    message: string;
+
+interface CreatePatientResponse {
+  success: boolean;
+  message: string;
 }
-interface CreateUserRequest
-{
-    userName: string;
-    firstName: string;
-    lastName: string;
-    password: string;
-    type: number;
+
+interface CreateUserRequest {
+  userName: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  type: number;
 }
-interface CreateUserResponse
-{
-    success: boolean;
-    message: string;
+
+interface CreateUserResponse {
+  success: boolean;
+  message: string;
 }
-interface LoginRequest
-{
-    username: string;
-    password: string;
+
+interface LoginRequest {
+  username: string;
+  password: string;
 }
-interface LoginResponse
-{
-    success: boolean;
-    message: string;
-    token: string;
+
+interface LoginResponse {
+  success: boolean;
+  message: string;
+  token: string;
 }
-interface PatientMeasurements
-{
-    data: MeasureDataDto[];
+
+interface PatientMeasurements {
+  data: MeasureDataDto[];
 }
-interface PatientWarnings
-{
-    data: PatientWarningDto[];
+
+interface PatientWarnings {
+  data: PatientWarningDto[];
 }
-interface SearchDevicesResponse
-{
-    data: MeasureDeviceDto[];
+
+interface SearchDevicesResponse {
+  data: MeasureDeviceDto[];
 }
-interface SearchPatientsResponse
-{
-    data: PatientDto[];
+
+interface SearchPatientsResponse {
+  data: PatientDto[];
 }
-interface SearchUsersResponse
-{
-    data: UserDto[];
+
+interface SearchUsersResponse {
+  data: UserDto[];
 }
-interface StatisticsResponse
-{
-    totalPatients: number;
-    totalMeasurements: number;
-    totalDevices: number;
-    totalWarnings: number;
-    totalUsers: number;
-    totalAdmins: number;
-    totalDoctors: number;
+
+interface StatisticsResponse {
+  totalPatients: number;
+  totalMeasurements: number;
+  totalDevices: number;
+  totalWarnings: number;
+  totalUsers: number;
+  totalAdmins: number;
+  totalDoctors: number;
 }
-interface MeasureDataDto
-{
-    time: string;
-    sys: number;
-    dia: number;
-    pulse: number;
+
+interface MeasureDataDto {
+  time: string;
+  sys: number;
+  dia: number;
+  pulse: number;
 }
-interface MeasureDeviceDto
-{
-    id: number;
-    manufacturer: string;
-    model: string;
-    serial: string;
+
+interface MeasureDeviceDto {
+  id: number;
+  manufacturer: string;
+  model: string;
+  serial: string;
 }
-interface PatientDto
-{
-    id: number;
-    firstName: string;
-    lastName: string;
-    gender: number;
-    age: number;
-    weight: number;
-    devices: MeasureDeviceDto[];
+
+interface PatientDto {
+  id: number;
+  firstName: string;
+  lastName: string;
+  gender: number;
+  age: number;
+  weight: number;
+  devices: MeasureDeviceDto[];
 }
-interface PatientWarningDto
-{
-    id: number;
-    patientId: number;
-    measureDataId?: number;
-    message: string;
-    time: string;
+
+interface PatientWarningDto {
+  id: number;
+  patientId: number;
+  measureDataId?: number;
+  message: string;
+  time: string;
 }
-interface UserDto
-{
-    id: number;
-    userName: string;
-    firstName: string;
-    lastName: string;
-    type: number;
-    email: string;
-    telegram: string;
-    patients: PatientDto[];
+
+interface UserDto {
+  id: number;
+  userName: string;
+  firstName: string;
+  lastName: string;
+  type: number;
+  email: string;
+  telegram: string;
+  patients: PatientDto[];
 }

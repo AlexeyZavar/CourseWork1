@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const query = ref("");
 const page = ref(1);
 
@@ -27,19 +27,19 @@ useHead({
     <v-row>
       <v-col>
         <v-text-field
+          v-model="query"
+          class="mt-4"
+          hide-details
+          label="Поиск"
           prepend-inner-icon="mdi-magnify"
           single-line
-          label="Поиск"
-          v-model="query"
           variant="outlined"
-          hide-details
-          class="mt-4"
         ></v-text-field>
         <v-data-table
-          :page="page"
           :headers="headers"
           :items="devices.data"
           :items-per-page="10"
+          :page="page"
           class="elevation-1"
         >
           <template v-slot:item="{ item }">

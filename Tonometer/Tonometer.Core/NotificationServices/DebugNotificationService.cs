@@ -8,7 +8,7 @@ using Tonometer.Database.Entities;
 
 namespace Tonometer.Core.NotificationServices;
 
-public class DebugNotificationService : INotificationService
+public sealed class DebugNotificationService : INotificationService
 {
     private readonly ILogger<DebugNotificationService> _logger;
 

@@ -1,6 +1,6 @@
 ﻿namespace Tonometer.Web.Data.Models;
 
-public class StatisticsResponse
+public sealed class StatisticsResponse
 {
     public long TotalPatients { get; set; }
     public long TotalMeasurements { get; set; }

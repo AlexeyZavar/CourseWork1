@@ -1,6 +1,6 @@
 ﻿namespace Tonometer.Database.Entities;
 
-public class PatientWarning
+public sealed class PatientWarning
 {
     public int Id { get; set; }
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute();
 
 const { data: user } = await apiFetch<UserDto>(`/user/${route.params.userId}`);
@@ -29,43 +29,43 @@ useHead({
             <v-row>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="ID"
                   v-model="user.id"
+                  label="ID"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Имя"
                   v-model="user.firstName"
+                  label="Имя"
                   @change="save"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Фамилия"
                   v-model="user.lastName"
+                  label="Фамилия"
                   @change="save"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Юзернейм"
                   v-model="user.userName"
+                  label="Юзернейм"
                   @change="save"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Почта"
                   v-model="user.email"
+                  label="Почта"
                   @change="save"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Telegram"
                   v-model="user.telegram"
+                  label="Telegram"
                   @change="save"
                 ></v-text-field>
               </v-col>

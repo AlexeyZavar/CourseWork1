@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const formValid = ref(false);
 const showAlert = ref(false);
 const alertError = ref();
@@ -54,83 +54,83 @@ useHead({
         <v-alert
           v-model="showAlert"
           border="start"
-          variant="tonal"
           closable
           color="error"
           title="Ошибка"
+          variant="tonal"
         >
           {{ alertError }}
         </v-alert>
         <v-form v-model="formValid">
           <v-text-field
             v-model="userName"
-            name="userName"
-            label="Юзернейм"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="Юзернейм"
+            name="userName"
+            required
+            variant="outlined"
           ></v-text-field>
           <v-text-field
             v-model="password"
-            name="password"
-            label="Пароль"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="Пароль"
+            name="password"
+            required
+            variant="outlined"
           ></v-text-field>
           <v-spacer />
           <v-text-field
             v-model="firstName"
-            name="firstName"
-            label="Имя"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="Имя"
+            name="firstName"
+            required
+            variant="outlined"
           ></v-text-field>
           <v-text-field
             v-model="lastName"
-            name="lastName"
-            label="Фамилия"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="Фамилия"
+            name="lastName"
+            required
+            variant="outlined"
           ></v-text-field>
 
           <v-text-field
             v-model="birthDay"
-            name="birthDay"
-            type="date"
-            label="День рождения"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="День рождения"
+            name="birthDay"
+            required
+            type="date"
+            variant="outlined"
           ></v-text-field>
           <v-select
             v-model="gender"
+            :items="['Мужчина', 'Женщина']"
+            :rules="rules"
             bg-color="bg"
             label="Пол"
-            :items="['Мужчина', 'Женщина']"
             required
-            :rules="rules"
           />
           <v-text-field
             v-model="weight"
-            name="weight"
-            min="40"
-            max="300"
-            type="number"
-            label="Текущий вес"
-            variant="outlined"
-            class="mt-4"
-            required
             :rules="rules"
+            class="mt-4"
+            label="Текущий вес"
+            max="300"
+            min="40"
+            name="weight"
+            required
+            type="number"
+            variant="outlined"
           ></v-text-field>
-          <v-btn size="large" @click="create" :disabled="!formValid">
+          <v-btn :disabled="!formValid" size="large" @click="create">
             Добавить
           </v-btn>
         </v-form>

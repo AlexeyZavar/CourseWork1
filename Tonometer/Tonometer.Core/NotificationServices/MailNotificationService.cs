@@ -7,7 +7,7 @@ using Tonometer.Database.Entities;
 
 namespace Tonometer.Core.NotificationServices;
 
-public class MailNotificationService : INotificationService
+public sealed class MailNotificationService : INotificationService
 {
     /// <inheritdoc />
     public void SendWarning(PatientWarning warning)

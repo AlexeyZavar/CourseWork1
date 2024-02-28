@@ -44,19 +44,19 @@ useHead({
               <v-card-item>
                 <div>
                   <v-text-field
+                    v-model="username"
                     label="Логин"
                     name="username"
                     prepend-icon="mdi-account"
                     type="text"
-                    v-model="username"
                   ></v-text-field>
 
                   <v-text-field
+                    v-model="password"
                     label="Пароль"
                     name="password"
                     prepend-icon="mdi-lock"
                     type="password"
-                    v-model="password"
                     @keydown.enter="login"
                   ></v-text-field>
                 </div>

@@ -27,10 +27,10 @@ useHead({
         <v-container class="mx-auto d-flex align-center justify-center">
           <v-btn text="Главная" variant="text" @click="navigateTo('/')" />
           <v-btn
+            v-if="isAdmin"
             text="Управление"
             variant="text"
             @click="navigateTo('/admin')"
-            v-if="isAdmin"
           />
 
           <v-spacer></v-spacer>
@@ -60,7 +60,7 @@ useHead({
         <v-container>
           <v-row>
             <v-col>
-              <v-sheet rounded="lg" class="px-6 pt-2 pb-6">
+              <v-sheet class="px-6 pt-2 pb-6" rounded="lg">
                 <v-divider class="mt-2" />
                 <div>
                   <slot />

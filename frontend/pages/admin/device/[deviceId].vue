@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute();
 
 const { data: device } = await apiFetch<MeasureDeviceDto>(
@@ -22,29 +22,29 @@ useHead({
             <v-row>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="ID"
                   v-model="device.id"
+                  label="ID"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Производитель"
                   v-model="device.manufacturer"
+                  label="Производитель"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Модель"
                   v-model="device.model"
+                  label="Модель"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  label="Серийный номер"
                   v-model="device.serial"
+                  label="Серийный номер"
                   readonly
                 ></v-text-field>
               </v-col>
