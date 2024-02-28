@@ -85,7 +85,8 @@ public static class Extensions
         var device = new MeasureDevice
         {
             Manufacturer = "Zavarenko Inc.",
-            Model = "Tea 3000"
+            Model = "Tea 3000",
+            Serial = "DEBUGOS424242"
         };
 
         var patient = new Patient

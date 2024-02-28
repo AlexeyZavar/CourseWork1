@@ -6,4 +6,5 @@ public sealed class MeasureDeviceDto
 
     public string Manufacturer { get; set; } = null!;
     public string Model { get; set; } = null!;
+    public string Serial { get; set; } = null!;
 }

@@ -2,6 +2,17 @@
 //     Changes to this file may cause incorrect behavior and will be lost if
 //     the code is regenerated.
 
+interface CreateDeviceRequest
+{
+    manufacturer: string;
+    model: string;
+    serial: string;
+}
+interface CreateDeviceResponse
+{
+    success: boolean;
+    message: string;
+}
 interface CreatePatientRequest
 {
     userName: string;
@@ -49,6 +60,10 @@ interface PatientWarnings
 {
     data: PatientWarningDto[];
 }
+interface SearchDevicesResponse
+{
+    data: MeasureDeviceDto[];
+}
 interface SearchPatientsResponse
 {
     data: PatientDto[];
@@ -56,6 +71,16 @@ interface SearchPatientsResponse
 interface SearchUsersResponse
 {
     data: UserDto[];
+}
+interface StatisticsResponse
+{
+    totalPatients: number;
+    totalMeasurements: number;
+    totalDevices: number;
+    totalWarnings: number;
+    totalUsers: number;
+    totalAdmins: number;
+    totalDoctors: number;
 }
 interface MeasureDataDto
 {
@@ -69,6 +94,7 @@ interface MeasureDeviceDto
     id: number;
     manufacturer: string;
     model: string;
+    serial: string;
 }
 interface PatientDto
 {
